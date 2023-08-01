@@ -1,0 +1,54 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<h1>{{title}}</h1>
+<div class="container-uid m-1 p-1 marco" >
+    <form action=""#miForm="ngForm">
+        <div ngModelGroup="contacto"#contacto="ngModelGroup">
+            <div class="form-group">
+                <label for="codigo">Codigo</label>
+                <input type="text" class="form-control" name="codigo" minlength="3" ngModel #codigo="ngModel" #_codigo required>
+                <br>
+            </div>
+            <div *ngIf="codigo.invalid && (codigo.dirty ||   codigo.touched)" >
+                <div *ngIf="codigo.errors" class="alert alert-danger">
+                        Codigo rquerido
+
+                </div>
+                <div [hidden]="!codigo.errors"class="alert alert-danger" >
+                    Debe teneer  tres  caracteres
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" ngModel #nombre required>
+                <br>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" ngModel #email required>
+                <br>
+            </div>
+            <div class="form-group">
+                <label for="movil">Movil</label>
+                <input type="number" class="form-control"  name="movil" ngModel #movil required>
+            </div>
+            <div class="alert alert-danger" >Numero Invalido</div>
+        </div>
+      <br>
+    </form>
+</div>
+<div class="container-uid fondo p-1 m-1">
+    Codigo clases: <b>
+        {{_codigo.className}}
+    </b><br>
+    Nombre clases:
+    <b>{{nombre.className}}</b><br>
+    Email clase: <b>{{email.className}}</b><br>
+    Numero clase: <b>{{movil.className}}</b><br>
+    Codigo :<b>{{codigo.value}}</b> <br>
+    Nombre :
+    <b>{{nombre.value}}</b><br>
+    Email: <b>{{email.value}}</b><br>
+    Movil: <b>{{movil.value}}   </b>
+    Form: <b>{{miForm.value | json}}</b>
+</div>
